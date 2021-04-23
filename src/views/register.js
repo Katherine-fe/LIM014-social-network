@@ -1,3 +1,7 @@
+import { createUserBD, signIn } from '../controller/controller-login.js';
+
+import { createUser } from '../model/firebase-user.js';
+
 export default () => {
   const viewLogin = `
   <form action="" class="col" id="col-form">
@@ -11,19 +15,19 @@ export default () => {
       <div class="label">
         <span class="material-icons">person</span>
         <label class="flex" for="email"><h4>User Name</h4>
-          <input class="" type="text">
+          <input class="" type="text" id="username">
         </label>
       </div>
       <div class="label">
         <span class="material-icons">person</span>
         <label class="flex" for="email"><h4>Email</h4>
-          <input class="" type="text">
+          <input class="" type="text" id="email">
         </label>
       </div>
       <div class="label">
       <span class="material-icons">person</span>
         <label class="flex" for="email"><h4>Info</h4>
-          <input class="" type="text">
+          <input class="" type="text" id="info">
         </label>
       </div>
       <div class="label">
@@ -31,7 +35,7 @@ export default () => {
           vpn_key
           </span>
         <label class="flex" for="email"><h4>Password</h4>
-          <input class="" type="password">
+          <input class="" type="password" id="password">
         </label>
       </div>
       <div class="label">
@@ -39,11 +43,11 @@ export default () => {
           vpn_key
           </span>
         <label class="flex" for="email"><h4>Confirm Password</h4>
-          <input class="" type="password">
+          <input class="" type="password" id="passwordconfir">
         </label>
       </div>
       <a href="#/login">Log in</a>
-      <button type="button"><a href="#/main">Register</a></button>
+      <button type="submit" id="btn-register">Register</button>
     </div>
     <div class="typeLog">
       <p>or enter with</p>
@@ -56,5 +60,33 @@ export default () => {
   const element = document.createElement('div');
   element.className = 'reg-login';
   element.innerHTML = viewLogin;
+
+  const singInForm = element.querySelector('#col-form');
+  singInForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = element.querySelector('#username').value;
+    const email = element.querySelector('#email').value;
+    const pass = element.querySelector('#password').value;
+    const passCheck = element.querySelector('#passwordconfir').value;
+    const info = element.querySelector('#info').value;
+    if (username === '') {
+      console.log('usuario vacio');
+    } else if (email === '') {
+      console.log('email vacio');
+    } else if (pass === '') {
+      console.log('pass vacio');
+    } else if (info === '') {
+      console.log('info vacio');
+    } else if (pass !== passCheck) {
+      console.log('pass no coincide');
+    } else {
+      createUserBD(email, pass)
+        .then((result) => { createUser(result.user.uid, username, email, info); })
+        .then(() => signIn(email, pass))
+        .then(() => { window.location.hash = '#/Home'; })
+        .catch((err) => console.error(err));
+    }
+  });
+
   return element;
 };

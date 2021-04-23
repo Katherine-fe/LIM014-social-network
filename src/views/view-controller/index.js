@@ -13,6 +13,10 @@ const changeView = (route) => {
       colfom.innerHTML = '';
       console.log(route);
       return colfom.appendChild(components.register());
+    case '#/Home':
+      container.innerHTML = '';
+      console.log(route);
+      return container.appendChild(components.home());
     default:
       break;
   }
