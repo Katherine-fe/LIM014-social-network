@@ -64,6 +64,9 @@ export default () => {
             if (firebase.auth().currentUser.uid === doc.data().uid) {
               editPost(doc.id);
               removePost(doc.id);
+            } else {
+              // eslint-disable-next-line no-alert
+              console.log('publicacion no le pertenece');
             }
           });
         });
