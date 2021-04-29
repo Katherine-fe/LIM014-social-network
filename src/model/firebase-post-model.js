@@ -7,6 +7,7 @@ export default function addPost(post) {
     email: firebase.auth().currentUser.email,
     uid: firebase.auth().currentUser.uid,
     datePost: dateP,
+
   });
 }
 

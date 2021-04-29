@@ -75,6 +75,7 @@ export default () => {
       })
       // eslint-disable-next-line no-unused-vars
       .catch((err) => {
+        // eslint-disable-next-line no-alert
         alert('Usuario no registrado');
       });
   });

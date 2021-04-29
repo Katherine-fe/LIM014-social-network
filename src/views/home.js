@@ -124,7 +124,7 @@ export default () => {
             <div class="more">
                 <div>
                     <img style="height: 30px; width: 30px;" src="./img/undraw_female_avatar_w3jk.svg" alt="Profile-pic">
-                    <p class="more-name">Fulanita pérez</p>
+                    <p class="more-name">${doc.data().user}</p>
                 </div>
                 <button class="btn-more" type="button">...</button>
                 <div class="btn-list">
@@ -180,6 +180,7 @@ export default () => {
           });
         });
     } else {
+      // eslint-disable-next-line no-alert
       alert('necesitas loguearte para hacer esta operación');
       window.location.hash = '#/login';
     }

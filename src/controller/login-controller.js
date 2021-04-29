@@ -23,3 +23,46 @@ export const signInWithFacebook = () => {
 };
   // Desconectar
 export const signOut = () => firebase.auth().signOut();
+
+export const verifEmail = () => {
+  firebase.auth().currentUser.sendEmailVerification().then(() => {
+  // Email sent.
+  }).catch((error) => {
+    console.log(error);
+  });
+};
+/*
+export const readCreateUserDB = (userid, emailUser, userInfo, username) => {
+  readUserDB(userid)
+    .then((res) => {
+      if (res.empty) {
+        createUser(userid, emailUser, userInfo, username);
+      } else {
+        res.forEach((refDoc) => {
+          const user = refDoc.data();
+          console.log(user);
+        });
+      }
+    });
+}; */
+/* const getUser = () => firebase.auth().currentUser;
+
+export const createUserReg = (email, password, name, info) => {
+  createUserBD(email, password)
+    .then((res) => {
+      const user = getUser();
+      user.updateProfile({
+        displayName: name,
+      });
+      window.location.hash = '#/Home';
+      createUser(res.user.uid, email, info, name);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      if (errorCode === 'auth/invalid-email' || errorCode === 'auth/weak-password') {
+        throw errorMessage;
+      }
+    });
+};
+ */
