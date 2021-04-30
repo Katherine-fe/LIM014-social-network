@@ -1,5 +1,5 @@
 import { createUser } from '../model/firebase-login-model.js';
-import { signIn, createUserBD } from '../controller/login-controller.js';
+import { signIn, createUserBD, verifEmail } from '../controller/login-controller.js';
 
 export default () => {
   const viewRegister = `<section class="container-change">
@@ -102,9 +102,15 @@ export default () => {
       console.log('pass no coincide');
     } else {
       createUserBD(email, pass)
-        .then((result) => { createUser(result.user.uid, username, email, info); })
+        .then((result) => {
+          createUser(result.user.uid, username, email, info);
+        })
         .then(() => signIn(email, pass))
-        .then(() => { window.location.hash = '#/Home'; })
+        .then(() => {
+          window.location.hash = '#/login';
+          verifEmail();
+          console.log('verifique su correo y acepte');
+        })
         .catch((err) => console.error(err));
     }
   });

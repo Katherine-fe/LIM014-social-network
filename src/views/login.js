@@ -67,16 +67,20 @@ export default () => {
     const singupEmail = document.querySelector('#email').value;
     const singupPassword = document.querySelector('#password').value;
     // console.log(singupEmail, singupPassword);
-
-    signIn(singupEmail, singupPassword)
+    if (firebase.auth().currentUser.emailVerified === true) {
+      signIn(singupEmail, singupPassword)
       // eslint-disable-next-line no-unused-vars
-      .then((userCredential) => {
-        window.location.hash = '#/Home';
-      })
+        .then((userCredential) => {
+          window.location.hash = '#/Home';
+        })
       // eslint-disable-next-line no-unused-vars
-      .catch((err) => {
-        alert('Usuario no registrado');
-      });
+        .catch((err) => {
+        // eslint-disable-next-line no-alert
+          alert('Usuario no registrado');
+        });
+    } else {
+      console.log('su correo no esta verificado');
+    }
   });
   // FACEBOOK
   const btnFacebook = document.querySelector('#btn-facebook');

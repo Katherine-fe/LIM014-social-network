@@ -23,3 +23,14 @@ export const signInWithFacebook = () => {
 };
   // Desconectar
 export const signOut = () => firebase.auth().signOut();
+
+export const verifEmail = () => {
+  const configuration = {
+    url: 'http://localhost:5000/',
+  };
+  firebase.auth().currentUser.sendEmailVerification(configuration).then(() => {
+  // Email sent.
+  }).catch((error) => {
+    console.log(error);
+  });
+};

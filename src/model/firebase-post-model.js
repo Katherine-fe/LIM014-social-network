@@ -1,23 +1,20 @@
 const fs = firebase.firestore();
+const dateP = Date.now();
 
-export default function addPost(post) {
-  const dateP = Date.now();
-  return fs.collection('post').add({
-    publication: post,
-    email: firebase.auth().currentUser.email,
-    uid: firebase.auth().currentUser.uid,
-    datePost: dateP,
-  });
-}
+export const addPost = (post) => fs.collection('post').add({
+  publication: post,
+  email: firebase.auth().currentUser.email,
+  uid: firebase.auth().currentUser.uid,
+  datePost: dateP,
+  user: firebase.auth().currentUser.displayName,
+});
 
-export function removePost(id) {
+export const removePost = (id) => {
   const remove = document.querySelectorAll(`.removeBtn-${id}`);
   remove.forEach((elemento) => {
     elemento.addEventListener('click', (e) => {
       e.preventDefault();
-      fs.collection('post')
-        .doc(id)
-        .delete()
+      fs.collection('post').doc(id).delete()
         .then(() => {
           console.log('Document successfully deleted!');
         })
@@ -26,9 +23,9 @@ export function removePost(id) {
         });
     });
   });
-}
+};
 
-export function updatePost(id) {
+export const updatePost = (id) => {
   const updates = document.querySelectorAll(`.editBtn-${id}`);
   updates.forEach((elemento) => {
     elemento.addEventListener('click', (e) => {
@@ -39,4 +36,4 @@ export function updatePost(id) {
       });
     });
   });
-}
+};
