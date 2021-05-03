@@ -124,27 +124,13 @@ const logOut = (() => {
   });
 });
 
-const nameUser = (() => {
-  const nombre = document.querySelector('.className');
-  getNameUser().then((name) => {
-    nombre.textContent = name;
-  });
-});
 const infoUser = (() => {
   const informacion = document.querySelector('.classInfo');
   getInfo().then((info) => {
     informacion.textContent = info;
   });
 });
-const logOut = (() => {
-  const btnLogOut = document.querySelector('.log-out');
-  btnLogOut.addEventListener('click', () => {
-    signOut().then(() => {
-      window.location.hash = '#/login';
-    });
-    console.log(signOut());
-  });
-});
+
 export {
   Home, eventInitHome, nameUser, infoUser, logOut,
 };
