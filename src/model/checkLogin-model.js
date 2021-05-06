@@ -1,4 +1,6 @@
 import addPost, { removePost, updatePost } from './firebase-post-model.js';
+import { showComment } from '../views/comment.js';
+import { addComments, removeComment } from './firebase-comment-model.js';
 
 const createPost = (() => {
   const notePost = document.getElementById('btn-add-note');
@@ -12,7 +14,6 @@ const createPost = (() => {
 
 const showPosts = (() => {
   const commentPublish = document.getElementById('commentPublish');
-
   firebase.firestore().collection('post')
     .orderBy('datePost', 'desc')
     .onSnapshot((querySnapshot) => {
@@ -45,30 +46,16 @@ const showPosts = (() => {
                 </section>
             </section>
             <section class="show-comments">
-                <section class="area-cm">
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
-                    <button type="button">Post</button>
+              <section class="area-cm">
+                  <textarea class="input-new-comment-${doc.id}" name="" id="" cols="30" rows="10"></textarea>
+                 <button type="button" id="" class="btn-add-comment-${doc.id}">Comment</button>
                 </section>
-                <article class="one-cm">
-                    <div class="head-cm">
-                        <h5 class="name-cm">Pycode</h5>
-                        <button class="btn-more" type="button">...</button>
-                        <div class="btn-list hide">
-                            <button>Update</button>
-                            <button>Delete</button>
-                        </div>
-                    </div>
-                    <p>#Phyton ipsum dolor sit amet consectetur adipisicing elit. Laudantium dolore temporibus rerum saepe hic ex unde ducimus dicta velit sequi?</p>
-                </article>
-                <article class="one-cm">
-                    <div class="head-cm">
-                        <h5 class="name-cm">Imran White</h5>
-                        <button class="btn-more" type="button">...</button>
-                    </div>
-                    <p>Tengo que hacer mi Salat</p>
-                </article>
+            <article class="one-cm">
+            </article>
             </section>
+            
         </div>`;
+
         const elm = document.querySelectorAll('.more > .btn-more');
         const btnList = document.querySelectorAll('.more > .btn-list');
 
@@ -83,7 +70,11 @@ const showPosts = (() => {
           removePost(doc.id);
           updatePost(doc.id, doc.data().publication);
         }
+        addComments(doc.id);
+        removeComment(doc.id);
       });
+      showComment();
     });
 });
+
 export { createPost, showPosts };

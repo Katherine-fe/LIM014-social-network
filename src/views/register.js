@@ -66,12 +66,7 @@ const Register = (() => {
   return reg;
 });
 const verifPassword = ((pass) => {
-  console.log(pass.search(/(?=.*[a-z])(?=.*[0-9])(?=.*[@$#!?])[a-zA-Z0-9@$#!?]{8,32}/g) !== -1);
   return pass.search(/(?=.*[a-z])(?=.*[0-9])(?=.*[@$#!?])[a-zA-Z0-9@$#!?]{8,32}/g) !== -1;
-  /* if (pass.search(/(?=.*[a-z])(?=.*[0-9])(?=.*[@$#!?])[a-zA-Z0-9@$#!?]{8,32}/g) !== -1) {
-    band = true;
-  }
-  return band; */
 });
 const eventInitRegister = (() => {
   const label = document.querySelectorAll('.flex input');

@@ -1,4 +1,5 @@
 const fs = firebase.firestore();
+const dateP = firebase.firestore.FieldValue.serverTimestamp();
 
 export const getInfo = () => new Promise((resolve) => {
   const infodefault = 'Frontend developer';
@@ -31,7 +32,6 @@ export const getNameUser = () => new Promise((resolve) => {
   }
 });
 export default function addPost(post) {
-  const dateP = firebase.firestore.FieldValue.serverTimestamp();
   getNameUser().then((msg) => {
     fs.collection('post').add({
       publication: post,

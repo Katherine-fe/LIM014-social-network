@@ -57,12 +57,6 @@ const Home = (() => {
                     <button type="button" class="btn-cm"><span class="material-icons">chat_bubble_outline</span> Comments</button>
                 </section>
             </section>
-            <section class="show-comments">
-                <section class="area-cm">
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
-                    <button type="button">Post</button>
-                </section>
-            </section>
         </div>
     </section>
     <section class="search">
@@ -86,8 +80,8 @@ const Home = (() => {
             <button type="button">Best top</button>
         </div>
         <div id="commentPublish" class="posting-history">
-            
-        </div>
+    
+        </div> 
     </section>
     </section>
     `;
