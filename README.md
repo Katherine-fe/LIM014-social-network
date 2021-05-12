@@ -7,9 +7,41 @@ Las caraterísticas técnicas de nuestra aplicación son las siguientes:
 - Diseñada con un enfoque mobile first (versión traducida)
 - Debe permitir la persintencia de datos
 - Red Social responsiva en la que podemos escribir, leer, actualizar y eliminar datos.
-- Para implementar la aplicación usarmos HTML, CCS, Vanilla JavaScript, Firebase
+- Para implementar la aplicación usamos HTML, CCS, Vanilla JavaScript, Firebase
 
-## 1. Objetivos de aprendizaje
+## 1. Prototipos
+
+Inicialmente éste era el prototipo de baja fidelidad para las vistas de registro e inicio de sesión.
+
+Luego trabajamos en los prototipos de alta fidelidad de las diferentes vistas:
+
+* Vista mobile
+
+* Vista Desktop
+
+## 2. Definición del producto
+
+### 1.1 Quiénes son los principales usuarios de producto
+
+### 1.2 Qué problema resuelve el producto / para qué le servirá a estos usuarios.
+
+### 1.3 Historias de usuario
+
+### 1.4 Organizacion de las Historias de Usuario
+
+
+
+## 3. Pruebas unitarias (unit tests)
+
+
+## 4. Entrevistas con usuarios
+
+* Hacer al menos 2 entrevistas con usuarios.
+
+* Hacer sesiones de _testing de usabilidad_ con el producto en HTML.
+
+
+## 5. Objetivos de aprendizaje
 
 El objetivo principal de aprendizaje de este proyecto es construir una
 [Single-page Application (SPA)](https://es.wikipedia.org/wiki/Single-page_application)
@@ -81,39 +113,6 @@ Event objeto, delegación de eventos)
 * [x] Crear prototipos para obtener feedback e iterar.
 * [x] Aplicar los principios de diseño visual (contraste, alineación, jerarquía)
 * [x] Planear y ejecutar tests de usabilidad.
-
-## 2. Definición del producto
-
-### 2.1 Quiénes son los principales usuarios de producto
-
-### 2.2 Qué problema resuelve el producto / para qué le servirá a estos usuarios.
-
-### 2.3 Historias de usuario
-
-### 2.4 Organizacion de las Historias de Usuario
-
-
-## 3. Prototipos
-
-Inicialmente éste era el prototipo de baja fidelidad para las vistas de registro e inicio de sesión.
-
-Luego trabajamos en los prototipos de alta fidelidad de las diferentes vistas:
-
-* Vista mobile
-
-* Vista Desktop
-
-
-
-## 4. Pruebas unitarias (unit tests)
-
-
-## 5. Entrevistas con usuarios
-
-* Hacer al menos 2 entrevistas con usuarios.
-
-* Hacer sesiones de _testing de usabilidad_ con el producto en HTML.
-
 
 ## 6. Tips y Lecturas complementarias
 
