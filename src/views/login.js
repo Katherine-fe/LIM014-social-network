@@ -99,6 +99,7 @@ const eventInitLogin = (() => {
         .catch((err) => {
           msg.innerHTML = `<p>${err}
                       <span class="material-icons">priority_high
+                      
                       </span></p>`;
         });
     }
