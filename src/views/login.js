@@ -29,9 +29,10 @@ const Login = (() => {
             <input class="" id="password" type="password">
           </label>
           </div>
+          <div class = "divRemember"><input type="checkbox" value="lsRememberMe" id="rememberMe"> <label id="labelRemember"for="rememberMe">Remember me</label></div>
           <div class="msg-text"></div>
         <a href="#/Register">Are you new? sing me</a>
-        <button type="submit">Log In</button>
+        <button id="theButton" type="submit">Log In</button>
       </div>
       <div class="typeLog">
         <p>or enter with</p>
@@ -72,20 +73,34 @@ const eventInitLogin = (() => {
       }
     });
   }
+  const singupPassword = document.querySelector('#password');
+  const singupEmail = document.querySelector('#email');
+  const rmCheck = document.querySelector('#rememberMe');
+
+  rmCheck.addEventListener('change', () => {
+    let email = singupEmail.value;
+
+    localStorage.setItem('email', email);
+
+    email = '';
+  });
+
+  if ((localStorage.email !== undefined)) {
+    singupEmail.value = localStorage.email;
+    form[0].classList.add('focus');
+    form[1].classList.add('focus');
+  }
 
   singInForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const singupEmail = document.querySelector('#email').value;
-    const singupPassword = document.querySelector('#password').value;
-
-    if (singupEmail === '' || singupPassword === '') {
+    if (singupEmail.value === '' || singupPassword.value === '') {
       msg.innerHTML = `<p>Inputs empty
                       <span class="material-icons">priority_high
                       </span></p>`;
       form[0].classList.add('fail');
       form[1].classList.add('fail');
     } else {
-      signIn(singupEmail, singupPassword)
+      signIn(singupEmail.value, singupPassword.value)
         .then(() => {
           if (firebase.auth().currentUser.emailVerified === true) {
             window.location.hash = '#/Home';
@@ -99,6 +114,7 @@ const eventInitLogin = (() => {
         .catch((err) => {
           msg.innerHTML = `<p>${err}
                       <span class="material-icons">priority_high
+                      
                       </span></p>`;
         });
     }
